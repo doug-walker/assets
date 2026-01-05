@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<materialx version="1.38" colorspace="lin_displayp3">
+  <texcoord name="tex1" type="vector2" />
+  <extract name="ext_x" type="float">
+    <input name="in" type="vector2" nodename="tex1" />
+    <input name="index" type="integer" value="0" />
+  </extract>
+  <extract name="ext_y" type="float">
+    <input name="in" type="vector2" nodename="tex1" />
+    <input name="index" type="integer" value="1" />
+  </extract>
+  <multiply name="mul_x" type="float">
+    <input name="in1" type="float" nodename="ext_x" />
+    <input name="in2" type="float" value="5" />
+  </multiply>
+  <multiply name="mul_y" type="float">
+    <input name="in1" type="float" nodename="ext_y" />
+    <input name="in2" type="float" value="5" />
+  </multiply>
+  <switch name="switch1" type="color3">
+    <input name="which" type="float" nodename="mul_x" />
+    <input name="in1" type="color3" value="0.784313, 0.39216, 0.196076" colorspace="srgb_texture" />
+    <input name="in2" type="color3" value="0.73716, 0.318381, 0.147482" colorspace="g18_rec709" />
+    <input name="in3" type="color3" value="0.779186, 0.392031, 0.20887" colorspace="g22_rec709" />
+    <input name="in4" type="color3" value="0.795557, 0.423849, 0.237987" colorspace="rec709_display" />
+    <input name="in5" type="color3" value="0.398892, 0.157752, 0.0536138" colorspace="acescg" />
+  </switch>
+  <switch name="switch2" type="color3">
+    <input name="which" type="float" nodename="mul_x" />
+    <input name="in1" type="color3" value="0.658522, 0.431959, 0.264483" colorspace="g22_ap1" />
+    <input name="in2" type="color3" value="0.733815, 0.413301, 0.24304" colorspace="srgb_displayp3" />
+    <input name="in3" type="color3" value="0.497662, 0.142382, 0.0481343" colorspace="lin_displayp3" />
+    <input name="in4" type="color3" value="0.449346, 0.12744, 0.0358282" colorspace="lin_adobergb" />
+    <input name="in5" type="color3" value="0.497662, 0.142382, 0.0481343" />
+  </switch>
+  <switch name="switch3" type="color3">
+    <input name="which" type="float" nodename="mul_x" />
+    <input name="in1" type="color3" nodename="switch3_srgb_texture" />
+    <input name="in2" type="color3" nodename="switch3_g18_rec709" />
+    <input name="in3" type="color3" nodename="switch3_g22_rec709" />
+    <input name="in4" type="color3" nodename="switch3_rec709_display" />
+    <input name="in5" type="color3" nodename="switch3_acescg" />
+  </switch>
+  <image name="switch3_srgb_texture" type="color3">
+    <input name="file" type="filename" value="textures/srgb_texture.hdr" colorspace="srgb_texture" />
+  </image>
+  <image name="switch3_g18_rec709" type="color3">
+    <input name="file" type="filename" value="textures/g18_rec709.hdr" colorspace="g18_rec709" />
+  </image>
+  <image name="switch3_g22_rec709" type="color3">
+    <input name="file" type="filename" value="textures/g22_rec709.hdr" colorspace="g22_rec709" />
+  </image>
+  <image name="switch3_rec709_display" type="color3">
+    <input name="file" type="filename" value="textures/rec709_display.hdr" colorspace="rec709_display" />
+  </image>
+  <image name="switch3_acescg" type="color3">
+    <input name="file" type="filename" value="textures/acescg.hdr" colorspace="acescg" />
+  </image>
+  <switch name="switch4" type="color3">
+    <input name="which" type="float" nodename="mul_x" />
+    <input name="in1" type="color3" nodename="switch4_adobergb" />
+    <input name="in2" type="color3" nodename="switch4_lin_adobergb" />
+    <input name="in3" type="color3" nodename="switch4_lin_displayp3" />
+    <input name="in4" type="color3" nodename="switch4_srgb_displayp3" />
+    <input name="in5" type="color3" nodename="switch4_untagged_lin_displayp3" />
+  </switch>
+  <image name="switch4_adobergb" type="color3" colorspace="adobergb">
+    <input name="file" type="filename" value="textures/adobergb.hdr" />
+  </image>
+  <image name="switch4_lin_adobergb" type="color3" colorspace="lin_adobergb">
+    <input name="file" type="filename" value="textures/lin_adobergb.hdr" />
+  </image>
+  <image name="switch4_lin_displayp3" type="color3" colorspace="lin_displayp3">
+    <input name="file" type="filename" value="textures/lin_displayp3.hdr" />
+  </image>
+  <image name="switch4_srgb_displayp3" type="color3" colorspace="srgb_displayp3">
+    <input name="file" type="filename" value="textures/srgb_displayp3.hdr" />
+  </image>
+  <image name="switch4_untagged_lin_displayp3" type="color3">
+    <input name="file" type="filename" value="textures/lin_displayp3.hdr" />
+  </image>
+  <nodegraph name="NG_switch5" colorspace="srgb_displayp3">
+    <input name="ng_input" type="float" nodename="mul_x" />
+    <switch name="switch5" type="color3">
+      <input name="which" type="float" interfacename="ng_input" />
+      <input name="in1" type="color3" value="0.695066, 0.391901, 0.220088" colorspace="adobergb" />
+      <input name="in2" type="color3" nodename="switch5_g22_ap1" />
+      <input name="in3" type="color3" value="0.733815, 0.413301, 0.24304" />
+      <input name="in4" type="color3" nodename="switch5_untagged_srgb_displayp3" />
+      <input name="in5" type="color3" value="0.577579, 0.12744, 0.0318954" colorspace="none" />
+    </switch>
+    <output name="ng_output" type="color3" nodename="switch5" />
+    <image name="switch5_g22_ap1" type="color3">
+      <input name="file" type="filename" value="textures/g22_ap1.hdr" colorspace="g22_ap1" />
+    </image>
+    <image name="switch5_untagged_srgb_displayp3" type="color3">
+      <input name="file" type="filename" value="textures/srgb_displayp3.hdr" />
+    </image>
+  </nodegraph>
+  <switch name="switches" type="color3">
+    <input name="which" type="float" nodename="mul_y" />
+    <input name="in1" type="color3" nodename="switch1" />
+    <input name="in2" type="color3" nodename="switch2" />
+    <input name="in3" type="color3" nodename="switch3" />
+    <input name="in4" type="color3" nodename="switch4" />
+    <input name="in5" type="color3" output="ng_output" nodegraph="NG_switch5" />
+  </switch>
+  <surface_unlit name="surf_unlit1" type="surfaceshader">
+    <input name="emission_color" type="color3" nodename="switches" />
+  </surface_unlit>
+  <surfacematerial name="test_material" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="surf_unlit1" />
+  </surfacematerial>
+</materialx>
