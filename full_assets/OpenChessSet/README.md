@@ -16,11 +16,6 @@ A compatibility-focused USD version was created by Pablo Delgado for the ASWF Op
 
 The normal maps with baked displacement are courtesy of Ed Mackey, and have been proposed as part of a MaterialX [glTF PBR](https://github.com/AcademySoftwareFoundation/MaterialX/pull/1098) version of the asset.
 
-## Known Problems
-
-- The MaterialX `colorspace` attribute is poorly supported in Hydra render delegates (10/2022). This may lead to incorrect brightening of the base color.
-- z-fighting can be observed in Pixar's Storm Hydra render delegate (v22.08)
-
 
 ## Future Improvements
 
