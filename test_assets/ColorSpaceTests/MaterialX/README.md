@@ -11,9 +11,11 @@ For the test to be considered passing, the RGB value of the entire central orang
 The material should be mapped onto a square plane. It uses the `emission_color` input of a `surface_unlit` surface shader material, so no scene lighting is needed (or desired) in order to obtain the expected aim values.
 
 This is what the target looks like with color management turned off:
+
 ![screenshot](screenshots/orange_squares_8x6_lin_rec709_no_cms.png)
 
 And here is what it should look like with color management turned on and working properly:
+
 ![screenshot](screenshots/orange_squares_8x6_lin_rec709_mtlx.png)
 
 Both of the images were generated using the renderer built into MaterialX and so obtaining the second image is possible with `MaterialXView`. The solid gray band around the outside was added as part of the render and is not part of the material itself (as will be seen below).
