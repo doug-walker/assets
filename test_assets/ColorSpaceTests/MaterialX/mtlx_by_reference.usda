@@ -22,16 +22,16 @@ def Xform "Plane"
         ]
         int[] faceVertexCounts = [4]
         int[] faceVertexIndices = [0, 1, 2, 3]
-        texCoord2f[] primvars:st = [(0, 0), (1, 0), (1, 1), (0, 1)] (
+         texCoord2f[] primvars:st = [(0, 1), (1, 1), (1, 0), (0, 0)] ( 
             interpolation = "varying"
         )
 
-        rel material:binding = </MaterialX/Materials/test_material>
+        rel material:binding = </MaterialX/Materials/orange_squares_8x6_lin_rec709>
     }
 }
 
 def Scope "MaterialX" (
-    references = @color_test.mtlx@</MaterialX>
+    references = @orange_squares_8x6_lin_rec709.mtlx@</MaterialX>
 )
 {
 }
