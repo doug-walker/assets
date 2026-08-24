@@ -1,0 +1,1975 @@
+#usda 1.0
+(
+    defaultPrim = "ColorSpaceTest"
+    metersPerUnit = 0.01
+    upAxis = "Y"
+)
+
+def Xform "ColorSpaceTest"
+{
+    def Scope "Materials"
+    {
+        def Material "Background"
+        {
+            token outputs:surface.connect = </ColorSpaceTest/Materials/Background/PBRShader.outputs:surface>
+
+            def Shader "PBRShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.0072, 0.0072, 0.0072)
+                float inputs:metallic = 0
+                float inputs:roughness = 1
+                token outputs:surface
+            }
+        }
+
+        def Material "Material_01_R0C0"
+        {
+            token outputs:surface.connect = </ColorSpaceTest/Materials/Material_01_R0C0/PBRShader.outputs:surface>
+
+            def Shader "PBRShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:emissiveColor.connect = </ColorSpaceTest/Materials/Material_01_R0C0/Texture.outputs:rgb>
+                token outputs:surface
+            }
+
+            def Shader "stReader"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                token inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "Texture"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @textures/lin_rec709.hdr@
+                token inputs:sourceColorSpace = "raw"
+                float2 inputs:st.connect = </ColorSpaceTest/Materials/Material_01_R0C0/stReader.outputs:result>
+                color3f outputs:rgb
+            }
+        }
+
+        def Material "Material_02_R0C1"
+        {
+            token outputs:surface.connect = </ColorSpaceTest/Materials/Material_02_R0C1/PBRShader.outputs:surface>
+
+            def Shader "PBRShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:emissiveColor.connect = </ColorSpaceTest/Materials/Material_02_R0C1/Texture.outputs:rgb>
+                token outputs:surface
+            }
+
+            def Shader "stReader"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                token inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "Texture"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @textures/srgb_texture.hdr@
+                token inputs:sourceColorSpace = "sRGB"
+                float2 inputs:st.connect = </ColorSpaceTest/Materials/Material_02_R0C1/stReader.outputs:result>
+                color3f outputs:rgb
+            }
+        }
+
+        def Material "Material_03_R0C2"
+        {
+            token outputs:surface.connect = </ColorSpaceTest/Materials/Material_03_R0C2/PBRShader.outputs:surface>
+
+            def Shader "PBRShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:emissiveColor.connect = </ColorSpaceTest/Materials/Material_03_R0C2/Texture.outputs:rgb>
+                token outputs:surface
+            }
+
+            def Shader "stReader"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                token inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "Texture"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @textures/lin_rec709.hdr@
+                token inputs:sourceColorSpace = "auto"
+                float2 inputs:st.connect = </ColorSpaceTest/Materials/Material_03_R0C2/stReader.outputs:result>
+                color3f outputs:rgb
+            }
+        }
+
+        def Material "Material_04_R0C3"
+        {
+            token outputs:surface.connect = </ColorSpaceTest/Materials/Material_04_R0C3/PBRShader.outputs:surface>
+
+            def Shader "PBRShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:emissiveColor.connect = </ColorSpaceTest/Materials/Material_04_R0C3/Texture.outputs:rgb>
+                token outputs:surface
+            }
+
+            def Shader "stReader"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                token inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "Texture"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @textures/lin_rec709.hdr@
+                float2 inputs:st.connect = </ColorSpaceTest/Materials/Material_04_R0C3/stReader.outputs:result>
+                color3f outputs:rgb
+            }
+        }
+
+        def Material "Material_05_R0C4"
+        {
+            token outputs:surface.connect = </ColorSpaceTest/Materials/Material_05_R0C4/PBRShader.outputs:surface>
+
+            def Shader "PBRShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:emissiveColor.connect = </ColorSpaceTest/Materials/Material_05_R0C4/Texture.outputs:rgb>
+                token outputs:surface
+            }
+
+            def Shader "stReader"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                token inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "Texture"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @textures/lin_rec709.hdr@
+                token inputs:sourceColorSpace = "lin_ap1_scene"
+                float2 inputs:st.connect = </ColorSpaceTest/Materials/Material_05_R0C4/stReader.outputs:result>
+                color3f outputs:rgb
+            }
+        }
+
+        def Material "Material_06_R1C0"
+        {
+            token outputs:surface.connect = </ColorSpaceTest/Materials/Material_06_R1C0/PBRShader.outputs:surface>
+
+            def Shader "PBRShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:emissiveColor.connect = </ColorSpaceTest/Materials/Material_06_R1C0/Texture.outputs:rgb>
+                token outputs:surface
+            }
+
+            def Shader "stReader"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                token inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "Texture"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @textures/lin_rec709.png@
+                token inputs:sourceColorSpace = "raw"
+                float2 inputs:st.connect = </ColorSpaceTest/Materials/Material_06_R1C0/stReader.outputs:result>
+                color3f outputs:rgb
+            }
+        }
+
+        def Material "Material_07_R1C1"
+        {
+            token outputs:surface.connect = </ColorSpaceTest/Materials/Material_07_R1C1/PBRShader.outputs:surface>
+
+            def Shader "PBRShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:emissiveColor.connect = </ColorSpaceTest/Materials/Material_07_R1C1/Texture.outputs:rgb>
+                token outputs:surface
+            }
+
+            def Shader "stReader"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                token inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "Texture"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @textures/srgb_texture.png@
+                token inputs:sourceColorSpace = "sRGB"
+                float2 inputs:st.connect = </ColorSpaceTest/Materials/Material_07_R1C1/stReader.outputs:result>
+                color3f outputs:rgb
+            }
+        }
+
+        def Material "Material_08_R1C2"
+        {
+            token outputs:surface.connect = </ColorSpaceTest/Materials/Material_08_R1C2/PBRShader.outputs:surface>
+
+            def Shader "PBRShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:emissiveColor.connect = </ColorSpaceTest/Materials/Material_08_R1C2/Texture.outputs:rgb>
+                token outputs:surface
+            }
+
+            def Shader "stReader"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                token inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "Texture"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @textures/srgb_texture.png@
+                token inputs:sourceColorSpace = "auto"
+                float2 inputs:st.connect = </ColorSpaceTest/Materials/Material_08_R1C2/stReader.outputs:result>
+                color3f outputs:rgb
+            }
+        }
+
+        def Material "Material_09_R1C3"
+        {
+            token outputs:surface.connect = </ColorSpaceTest/Materials/Material_09_R1C3/PBRShader.outputs:surface>
+
+            def Shader "PBRShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:emissiveColor.connect = </ColorSpaceTest/Materials/Material_09_R1C3/Texture.outputs:rgb>
+                token outputs:surface
+            }
+
+            def Shader "stReader"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                token inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "Texture"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @textures/srgb_texture.png@
+                float2 inputs:st.connect = </ColorSpaceTest/Materials/Material_09_R1C3/stReader.outputs:result>
+                color3f outputs:rgb
+            }
+        }
+
+        def Material "Material_10_R1C4"
+        {
+            token outputs:surface.connect = </ColorSpaceTest/Materials/Material_10_R1C4/PBRShader.outputs:surface>
+
+            def Shader "PBRShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:emissiveColor.connect = </ColorSpaceTest/Materials/Material_10_R1C4/Texture.outputs:rgb>
+                token outputs:surface
+            }
+
+            def Shader "stReader"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                token inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "Texture"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @textures/srgb_texture.png@
+                token inputs:sourceColorSpace = "lin_ap1_scene"
+                float2 inputs:st.connect = </ColorSpaceTest/Materials/Material_10_R1C4/stReader.outputs:result>
+                color3f outputs:rgb
+            }
+        }
+
+        def Material "Material_11_R2C0"
+        {
+            token outputs:surface.connect = </ColorSpaceTest/Materials/Material_11_R2C0/PBRShader.outputs:surface>
+
+            def Shader "PBRShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:emissiveColor.connect = </ColorSpaceTest/Materials/Material_11_R2C0/Texture.outputs:rgb>
+                token outputs:surface
+            }
+
+            def Shader "stReader"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                token inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "Texture"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @textures/g22_ap1.hdr@ (
+                    colorSpace = "g22_ap1_scene"
+                )
+                token inputs:sourceColorSpace = "raw"
+                float2 inputs:st.connect = </ColorSpaceTest/Materials/Material_11_R2C0/stReader.outputs:result>
+                color3f outputs:rgb
+            }
+        }
+
+        def Material "Material_12_R2C1"
+        {
+            token outputs:surface.connect = </ColorSpaceTest/Materials/Material_12_R2C1/PBRShader.outputs:surface>
+
+            def Shader "PBRShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:emissiveColor.connect = </ColorSpaceTest/Materials/Material_12_R2C1/Texture.outputs:rgb>
+                token outputs:surface
+            }
+
+            def Shader "stReader"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                token inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "Texture"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @textures/g22_ap1.hdr@ (
+                    colorSpace = "g22_ap1_scene"
+                )
+                token inputs:sourceColorSpace = "sRGB"
+                float2 inputs:st.connect = </ColorSpaceTest/Materials/Material_12_R2C1/stReader.outputs:result>
+                color3f outputs:rgb
+            }
+        }
+
+        def Material "Material_13_R2C2"
+        {
+            token outputs:surface.connect = </ColorSpaceTest/Materials/Material_13_R2C2/PBRShader.outputs:surface>
+
+            def Shader "PBRShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:emissiveColor.connect = </ColorSpaceTest/Materials/Material_13_R2C2/Texture.outputs:rgb>
+                token outputs:surface
+            }
+
+            def Shader "stReader"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                token inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "Texture"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @textures/g22_ap1.hdr@ (
+                    colorSpace = "g22_ap1_scene"
+                )
+                token inputs:sourceColorSpace = "auto"
+                float2 inputs:st.connect = </ColorSpaceTest/Materials/Material_13_R2C2/stReader.outputs:result>
+                color3f outputs:rgb
+            }
+        }
+
+        def Material "Material_14_R2C3"
+        {
+            token outputs:surface.connect = </ColorSpaceTest/Materials/Material_14_R2C3/PBRShader.outputs:surface>
+
+            def Shader "PBRShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:emissiveColor.connect = </ColorSpaceTest/Materials/Material_14_R2C3/Texture.outputs:rgb>
+                token outputs:surface
+            }
+
+            def Shader "stReader"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                token inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "Texture"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @textures/g22_ap1.hdr@ (
+                    colorSpace = "g22_ap1_scene"
+                )
+                float2 inputs:st.connect = </ColorSpaceTest/Materials/Material_14_R2C3/stReader.outputs:result>
+                color3f outputs:rgb
+            }
+        }
+
+        def Material "Material_15_R2C4"
+        {
+            token outputs:surface.connect = </ColorSpaceTest/Materials/Material_15_R2C4/PBRShader.outputs:surface>
+
+            def Shader "PBRShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:emissiveColor.connect = </ColorSpaceTest/Materials/Material_15_R2C4/Texture.outputs:rgb>
+                token outputs:surface
+            }
+
+            def Shader "stReader"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                token inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "Texture"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @textures/g22_ap1.hdr@ (
+                    colorSpace = "g22_ap1_scene"
+                )
+                token inputs:sourceColorSpace = "lin_ap1_scene"
+                float2 inputs:st.connect = </ColorSpaceTest/Materials/Material_15_R2C4/stReader.outputs:result>
+                color3f outputs:rgb
+            }
+        }
+
+        def Material "Material_16_R3C0"
+        {
+            token outputs:surface.connect = </ColorSpaceTest/Materials/Material_16_R3C0/PBRShader.outputs:surface>
+
+            def Shader "PBRShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:emissiveColor.connect = </ColorSpaceTest/Materials/Material_16_R3C0/Texture.outputs:rgb>
+                token outputs:surface
+            }
+
+            def Shader "stReader"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                token inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "Texture" (
+                prepend apiSchemas = ["ColorSpaceAPI"]
+            )
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @textures/srgb_displayp3.hdr@
+                custom uniform token inputs:file:colorSpace:name = "srgb_p3d65_scene"
+                token inputs:sourceColorSpace = "raw"
+                float2 inputs:st.connect = </ColorSpaceTest/Materials/Material_16_R3C0/stReader.outputs:result>
+                color3f outputs:rgb
+            }
+        }
+
+        def Material "Material_17_R3C1"
+        {
+            token outputs:surface.connect = </ColorSpaceTest/Materials/Material_17_R3C1/PBRShader.outputs:surface>
+
+            def Shader "PBRShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:emissiveColor.connect = </ColorSpaceTest/Materials/Material_17_R3C1/Texture.outputs:rgb>
+                token outputs:surface
+            }
+
+            def Shader "stReader"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                token inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "Texture" (
+                prepend apiSchemas = ["ColorSpaceAPI"]
+            )
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @textures/srgb_displayp3.hdr@
+                custom uniform token inputs:file:colorSpace:name = "srgb_p3d65_scene"
+                token inputs:sourceColorSpace = "sRGB"
+                float2 inputs:st.connect = </ColorSpaceTest/Materials/Material_17_R3C1/stReader.outputs:result>
+                color3f outputs:rgb
+            }
+        }
+
+        def Material "Material_18_R3C2"
+        {
+            token outputs:surface.connect = </ColorSpaceTest/Materials/Material_18_R3C2/PBRShader.outputs:surface>
+
+            def Shader "PBRShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:emissiveColor.connect = </ColorSpaceTest/Materials/Material_18_R3C2/Texture.outputs:rgb>
+                token outputs:surface
+            }
+
+            def Shader "stReader"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                token inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "Texture" (
+                prepend apiSchemas = ["ColorSpaceAPI"]
+            )
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @textures/srgb_displayp3.hdr@
+                custom uniform token inputs:file:colorSpace:name = "srgb_p3d65_scene"
+                token inputs:sourceColorSpace = "auto"
+                float2 inputs:st.connect = </ColorSpaceTest/Materials/Material_18_R3C2/stReader.outputs:result>
+                color3f outputs:rgb
+            }
+        }
+
+        def Material "Material_19_R3C3"
+        {
+            token outputs:surface.connect = </ColorSpaceTest/Materials/Material_19_R3C3/PBRShader.outputs:surface>
+
+            def Shader "PBRShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:emissiveColor.connect = </ColorSpaceTest/Materials/Material_19_R3C3/Texture.outputs:rgb>
+                token outputs:surface
+            }
+
+            def Shader "stReader"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                token inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "Texture" (
+                prepend apiSchemas = ["ColorSpaceAPI"]
+            )
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @textures/srgb_displayp3.hdr@
+                custom uniform token inputs:file:colorSpace:name = "srgb_p3d65_scene"
+                float2 inputs:st.connect = </ColorSpaceTest/Materials/Material_19_R3C3/stReader.outputs:result>
+                color3f outputs:rgb
+            }
+        }
+
+        def Material "Material_20_R3C4"
+        {
+            token outputs:surface.connect = </ColorSpaceTest/Materials/Material_20_R3C4/PBRShader.outputs:surface>
+
+            def Shader "PBRShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:emissiveColor.connect = </ColorSpaceTest/Materials/Material_20_R3C4/Texture.outputs:rgb>
+                token outputs:surface
+            }
+
+            def Shader "stReader"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                token inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "Texture" (
+                prepend apiSchemas = ["ColorSpaceAPI"]
+            )
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @textures/srgb_displayp3.hdr@
+                custom uniform token inputs:file:colorSpace:name = "srgb_p3d65_scene"
+                token inputs:sourceColorSpace = "lin_ap1_scene"
+                float2 inputs:st.connect = </ColorSpaceTest/Materials/Material_20_R3C4/stReader.outputs:result>
+                color3f outputs:rgb
+            }
+        }
+
+        def Material "Material_21_R4C0" (
+            prepend apiSchemas = ["ColorSpaceAPI"]
+        )
+        {
+            uniform token colorSpace:name = "lin_adobergb_scene"
+            token outputs:surface.connect = </ColorSpaceTest/Materials/Material_21_R4C0/PBRShader.outputs:surface>
+
+            def Shader "PBRShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:emissiveColor.connect = </ColorSpaceTest/Materials/Material_21_R4C0/Texture.outputs:rgb>
+                token outputs:surface
+            }
+
+            def Shader "stReader"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                token inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "Texture"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @textures/lin_adobergb.hdr@
+                token inputs:sourceColorSpace = "raw"
+                float2 inputs:st.connect = </ColorSpaceTest/Materials/Material_21_R4C0/stReader.outputs:result>
+                color3f outputs:rgb
+            }
+        }
+
+        def Material "Material_22_R4C1" (
+            prepend apiSchemas = ["ColorSpaceAPI"]
+        )
+        {
+            uniform token colorSpace:name = "lin_adobergb_scene"
+            token outputs:surface.connect = </ColorSpaceTest/Materials/Material_22_R4C1/PBRShader.outputs:surface>
+
+            def Shader "PBRShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:emissiveColor.connect = </ColorSpaceTest/Materials/Material_22_R4C1/Texture.outputs:rgb>
+                token outputs:surface
+            }
+
+            def Shader "stReader"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                token inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "Texture"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @textures/lin_adobergb.hdr@
+                token inputs:sourceColorSpace = "sRGB"
+                float2 inputs:st.connect = </ColorSpaceTest/Materials/Material_22_R4C1/stReader.outputs:result>
+                color3f outputs:rgb
+            }
+        }
+
+        def Material "Material_23_R4C2" (
+            prepend apiSchemas = ["ColorSpaceAPI"]
+        )
+        {
+            uniform token colorSpace:name = "lin_adobergb_scene"
+            token outputs:surface.connect = </ColorSpaceTest/Materials/Material_23_R4C2/PBRShader.outputs:surface>
+
+            def Shader "PBRShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:emissiveColor.connect = </ColorSpaceTest/Materials/Material_23_R4C2/Texture.outputs:rgb>
+                token outputs:surface
+            }
+
+            def Shader "stReader"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                token inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "Texture"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @textures/lin_adobergb.hdr@
+                token inputs:sourceColorSpace = "auto"
+                float2 inputs:st.connect = </ColorSpaceTest/Materials/Material_23_R4C2/stReader.outputs:result>
+                color3f outputs:rgb
+            }
+        }
+
+        def Material "Material_24_R4C3" (
+            prepend apiSchemas = ["ColorSpaceAPI"]
+        )
+        {
+            uniform token colorSpace:name = "lin_adobergb_scene"
+            token outputs:surface.connect = </ColorSpaceTest/Materials/Material_24_R4C3/PBRShader.outputs:surface>
+
+            def Shader "PBRShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:emissiveColor.connect = </ColorSpaceTest/Materials/Material_24_R4C3/Texture.outputs:rgb>
+                token outputs:surface
+            }
+
+            def Shader "stReader"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                token inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "Texture"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @textures/lin_adobergb.hdr@
+                float2 inputs:st.connect = </ColorSpaceTest/Materials/Material_24_R4C3/stReader.outputs:result>
+                color3f outputs:rgb
+            }
+        }
+
+        def Material "Material_25_R4C4" (
+            prepend apiSchemas = ["ColorSpaceAPI"]
+        )
+        {
+            uniform token colorSpace:name = "lin_adobergb_scene"
+            token outputs:surface.connect = </ColorSpaceTest/Materials/Material_25_R4C4/PBRShader.outputs:surface>
+
+            def Shader "PBRShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:emissiveColor.connect = </ColorSpaceTest/Materials/Material_25_R4C4/Texture.outputs:rgb>
+                token outputs:surface
+            }
+
+            def Shader "stReader"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                token inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "Texture"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @textures/lin_adobergb.hdr@
+                token inputs:sourceColorSpace = "lin_ap1_scene"
+                float2 inputs:st.connect = </ColorSpaceTest/Materials/Material_25_R4C4/stReader.outputs:result>
+                color3f outputs:rgb
+            }
+        }
+    }
+
+    def Scope "Label_Materials"
+    {
+        def Material "LabelCol_00"
+        {
+            token outputs:surface.connect = </ColorSpaceTest/Label_Materials/LabelCol_00/PBRShader.outputs:surface>
+
+            def Shader "PBRShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0, 0, 0)
+                color3f inputs:emissiveColor.connect = </ColorSpaceTest/Label_Materials/LabelCol_00/Texture.outputs:rgb>
+                float inputs:metallic = 0
+                float inputs:roughness = 1
+                token outputs:surface
+            }
+
+            def Shader "stReader"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                token inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "Texture"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @labels/col_00.png@
+                float2 inputs:st.connect = </ColorSpaceTest/Label_Materials/LabelCol_00/stReader.outputs:result>
+                color3f outputs:rgb
+            }
+        }
+
+        def Material "LabelCol_01"
+        {
+            token outputs:surface.connect = </ColorSpaceTest/Label_Materials/LabelCol_01/PBRShader.outputs:surface>
+
+            def Shader "PBRShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0, 0, 0)
+                color3f inputs:emissiveColor.connect = </ColorSpaceTest/Label_Materials/LabelCol_01/Texture.outputs:rgb>
+                float inputs:metallic = 0
+                float inputs:roughness = 1
+                token outputs:surface
+            }
+
+            def Shader "stReader"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                token inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "Texture"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @labels/col_01.png@
+                float2 inputs:st.connect = </ColorSpaceTest/Label_Materials/LabelCol_01/stReader.outputs:result>
+                color3f outputs:rgb
+            }
+        }
+
+        def Material "LabelCol_02"
+        {
+            token outputs:surface.connect = </ColorSpaceTest/Label_Materials/LabelCol_02/PBRShader.outputs:surface>
+
+            def Shader "PBRShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0, 0, 0)
+                color3f inputs:emissiveColor.connect = </ColorSpaceTest/Label_Materials/LabelCol_02/Texture.outputs:rgb>
+                float inputs:metallic = 0
+                float inputs:roughness = 1
+                token outputs:surface
+            }
+
+            def Shader "stReader"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                token inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "Texture"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @labels/col_02.png@
+                float2 inputs:st.connect = </ColorSpaceTest/Label_Materials/LabelCol_02/stReader.outputs:result>
+                color3f outputs:rgb
+            }
+        }
+
+        def Material "LabelCol_03"
+        {
+            token outputs:surface.connect = </ColorSpaceTest/Label_Materials/LabelCol_03/PBRShader.outputs:surface>
+
+            def Shader "PBRShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0, 0, 0)
+                color3f inputs:emissiveColor.connect = </ColorSpaceTest/Label_Materials/LabelCol_03/Texture.outputs:rgb>
+                float inputs:metallic = 0
+                float inputs:roughness = 1
+                token outputs:surface
+            }
+
+            def Shader "stReader"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                token inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "Texture"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @labels/col_03.png@
+                float2 inputs:st.connect = </ColorSpaceTest/Label_Materials/LabelCol_03/stReader.outputs:result>
+                color3f outputs:rgb
+            }
+        }
+
+        def Material "LabelCol_04"
+        {
+            token outputs:surface.connect = </ColorSpaceTest/Label_Materials/LabelCol_04/PBRShader.outputs:surface>
+
+            def Shader "PBRShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0, 0, 0)
+                color3f inputs:emissiveColor.connect = </ColorSpaceTest/Label_Materials/LabelCol_04/Texture.outputs:rgb>
+                float inputs:metallic = 0
+                float inputs:roughness = 1
+                token outputs:surface
+            }
+
+            def Shader "stReader"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                token inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "Texture"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @labels/col_04.png@
+                float2 inputs:st.connect = </ColorSpaceTest/Label_Materials/LabelCol_04/stReader.outputs:result>
+                color3f outputs:rgb
+            }
+        }
+
+        def Material "LabelRow_00"
+        {
+            token outputs:surface.connect = </ColorSpaceTest/Label_Materials/LabelRow_00/PBRShader.outputs:surface>
+
+            def Shader "PBRShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0, 0, 0)
+                color3f inputs:emissiveColor.connect = </ColorSpaceTest/Label_Materials/LabelRow_00/Texture.outputs:rgb>
+                float inputs:metallic = 0
+                float inputs:roughness = 1
+                token outputs:surface
+            }
+
+            def Shader "stReader"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                token inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "Texture"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @labels/row_00.png@
+                float2 inputs:st.connect = </ColorSpaceTest/Label_Materials/LabelRow_00/stReader.outputs:result>
+                color3f outputs:rgb
+            }
+        }
+
+        def Material "LabelRow_01"
+        {
+            token outputs:surface.connect = </ColorSpaceTest/Label_Materials/LabelRow_01/PBRShader.outputs:surface>
+
+            def Shader "PBRShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0, 0, 0)
+                color3f inputs:emissiveColor.connect = </ColorSpaceTest/Label_Materials/LabelRow_01/Texture.outputs:rgb>
+                float inputs:metallic = 0
+                float inputs:roughness = 1
+                token outputs:surface
+            }
+
+            def Shader "stReader"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                token inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "Texture"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @labels/row_01.png@
+                float2 inputs:st.connect = </ColorSpaceTest/Label_Materials/LabelRow_01/stReader.outputs:result>
+                color3f outputs:rgb
+            }
+        }
+
+        def Material "LabelRow_02"
+        {
+            token outputs:surface.connect = </ColorSpaceTest/Label_Materials/LabelRow_02/PBRShader.outputs:surface>
+
+            def Shader "PBRShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0, 0, 0)
+                color3f inputs:emissiveColor.connect = </ColorSpaceTest/Label_Materials/LabelRow_02/Texture.outputs:rgb>
+                float inputs:metallic = 0
+                float inputs:roughness = 1
+                token outputs:surface
+            }
+
+            def Shader "stReader"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                token inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "Texture"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @labels/row_02.png@
+                float2 inputs:st.connect = </ColorSpaceTest/Label_Materials/LabelRow_02/stReader.outputs:result>
+                color3f outputs:rgb
+            }
+        }
+
+        def Material "LabelRow_03"
+        {
+            token outputs:surface.connect = </ColorSpaceTest/Label_Materials/LabelRow_03/PBRShader.outputs:surface>
+
+            def Shader "PBRShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0, 0, 0)
+                color3f inputs:emissiveColor.connect = </ColorSpaceTest/Label_Materials/LabelRow_03/Texture.outputs:rgb>
+                float inputs:metallic = 0
+                float inputs:roughness = 1
+                token outputs:surface
+            }
+
+            def Shader "stReader"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                token inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "Texture"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @labels/row_03.png@
+                float2 inputs:st.connect = </ColorSpaceTest/Label_Materials/LabelRow_03/stReader.outputs:result>
+                color3f outputs:rgb
+            }
+        }
+
+        def Material "LabelRow_04"
+        {
+            token outputs:surface.connect = </ColorSpaceTest/Label_Materials/LabelRow_04/PBRShader.outputs:surface>
+
+            def Shader "PBRShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0, 0, 0)
+                color3f inputs:emissiveColor.connect = </ColorSpaceTest/Label_Materials/LabelRow_04/Texture.outputs:rgb>
+                float inputs:metallic = 0
+                float inputs:roughness = 1
+                token outputs:surface
+            }
+
+            def Shader "stReader"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                token inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "Texture"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @labels/row_04.png@
+                float2 inputs:st.connect = </ColorSpaceTest/Label_Materials/LabelRow_04/stReader.outputs:result>
+                color3f outputs:rgb
+            }
+        }
+
+        def Material "LabelBottom"
+        {
+            token outputs:surface.connect = </ColorSpaceTest/Label_Materials/LabelBottom/PBRShader.outputs:surface>
+
+            def Shader "PBRShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0, 0, 0)
+                color3f inputs:emissiveColor.connect = </ColorSpaceTest/Label_Materials/LabelBottom/Texture.outputs:rgb>
+                float inputs:metallic = 0
+                float inputs:roughness = 1
+                token outputs:surface
+            }
+
+            def Shader "stReader"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                token inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "Texture"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @labels/bottom.png@
+                float2 inputs:st.connect = </ColorSpaceTest/Label_Materials/LabelBottom/stReader.outputs:result>
+                color3f outputs:rgb
+            }
+        }
+    }
+
+    def Scope "Patch_Meshes"
+    {
+        def Mesh "Patch_01_R0C0" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            customData = {
+                dictionary cs_test = {
+                    string file_cs_md = ""
+                    string file_cs_name = ""
+                    int index = 1
+                    string name = "R0C0"
+                    string scope_cs = ""
+                    string source_cs = "raw"
+                    string texture = "textures/lin_rec709.hdr"
+                }
+            }
+        )
+        {
+            int[] faceVertexCounts = [4]
+            int[] faceVertexIndices = [0, 1, 2, 3]
+            rel material:binding = </ColorSpaceTest/Materials/Material_01_R0C0>
+            normal3f[] normals = [(0, 0, 1)] (
+                interpolation = "constant"
+            )
+            point3f[] points = [(-11, 7, 0), (-7, 7, 0), (-7, 11, 0), (-11, 11, 0)]
+            texCoord2f[] primvars:st = [(0.5, 0.5)] (
+                interpolation = "constant"
+            )
+        }
+
+        def Mesh "Patch_02_R0C1" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            customData = {
+                dictionary cs_test = {
+                    string file_cs_md = ""
+                    string file_cs_name = ""
+                    int index = 2
+                    string name = "R0C1"
+                    string scope_cs = ""
+                    string source_cs = "sRGB"
+                    string texture = "textures/srgb_texture.hdr"
+                }
+            }
+        )
+        {
+            int[] faceVertexCounts = [4]
+            int[] faceVertexIndices = [0, 1, 2, 3]
+            rel material:binding = </ColorSpaceTest/Materials/Material_02_R0C1>
+            normal3f[] normals = [(0, 0, 1)] (
+                interpolation = "constant"
+            )
+            point3f[] points = [(-6.5, 7, 0), (-2.5, 7, 0), (-2.5, 11, 0), (-6.5, 11, 0)]
+            texCoord2f[] primvars:st = [(0.5, 0.5)] (
+                interpolation = "constant"
+            )
+        }
+
+        def Mesh "Patch_03_R0C2" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            customData = {
+                dictionary cs_test = {
+                    string file_cs_md = ""
+                    string file_cs_name = ""
+                    int index = 3
+                    string name = "R0C2"
+                    string scope_cs = ""
+                    string source_cs = "auto"
+                    string texture = "textures/lin_rec709.hdr"
+                }
+            }
+        )
+        {
+            int[] faceVertexCounts = [4]
+            int[] faceVertexIndices = [0, 1, 2, 3]
+            rel material:binding = </ColorSpaceTest/Materials/Material_03_R0C2>
+            normal3f[] normals = [(0, 0, 1)] (
+                interpolation = "constant"
+            )
+            point3f[] points = [(-2, 7, 0), (2, 7, 0), (2, 11, 0), (-2, 11, 0)]
+            texCoord2f[] primvars:st = [(0.5, 0.5)] (
+                interpolation = "constant"
+            )
+        }
+
+        def Mesh "Patch_04_R0C3" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            customData = {
+                dictionary cs_test = {
+                    string file_cs_md = ""
+                    string file_cs_name = ""
+                    int index = 4
+                    string name = "R0C3"
+                    string scope_cs = ""
+                    string source_cs = ""
+                    string texture = "textures/lin_rec709.hdr"
+                }
+            }
+        )
+        {
+            int[] faceVertexCounts = [4]
+            int[] faceVertexIndices = [0, 1, 2, 3]
+            rel material:binding = </ColorSpaceTest/Materials/Material_04_R0C3>
+            normal3f[] normals = [(0, 0, 1)] (
+                interpolation = "constant"
+            )
+            point3f[] points = [(2.5, 7, 0), (6.5, 7, 0), (6.5, 11, 0), (2.5, 11, 0)]
+            texCoord2f[] primvars:st = [(0.5, 0.5)] (
+                interpolation = "constant"
+            )
+        }
+
+        def Mesh "Patch_05_R0C4" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            customData = {
+                dictionary cs_test = {
+                    string file_cs_md = ""
+                    string file_cs_name = ""
+                    int index = 5
+                    string name = "R0C4"
+                    string scope_cs = ""
+                    string source_cs = "lin_ap1_scene"
+                    string texture = "textures/lin_rec709.hdr"
+                }
+            }
+        )
+        {
+            int[] faceVertexCounts = [4]
+            int[] faceVertexIndices = [0, 1, 2, 3]
+            rel material:binding = </ColorSpaceTest/Materials/Material_05_R0C4>
+            normal3f[] normals = [(0, 0, 1)] (
+                interpolation = "constant"
+            )
+            point3f[] points = [(7, 7, 0), (11, 7, 0), (11, 11, 0), (7, 11, 0)]
+            texCoord2f[] primvars:st = [(0.5, 0.5)] (
+                interpolation = "constant"
+            )
+        }
+
+        def Mesh "Patch_06_R1C0" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            customData = {
+                dictionary cs_test = {
+                    string file_cs_md = ""
+                    string file_cs_name = ""
+                    int index = 6
+                    string name = "R1C0"
+                    string scope_cs = ""
+                    string source_cs = "raw"
+                    string texture = "textures/lin_rec709.png"
+                }
+            }
+        )
+        {
+            int[] faceVertexCounts = [4]
+            int[] faceVertexIndices = [0, 1, 2, 3]
+            rel material:binding = </ColorSpaceTest/Materials/Material_06_R1C0>
+            normal3f[] normals = [(0, 0, 1)] (
+                interpolation = "constant"
+            )
+            point3f[] points = [(-11, 2.5, 0), (-7, 2.5, 0), (-7, 6.5, 0), (-11, 6.5, 0)]
+            texCoord2f[] primvars:st = [(0.5, 0.5)] (
+                interpolation = "constant"
+            )
+        }
+
+        def Mesh "Patch_07_R1C1" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            customData = {
+                dictionary cs_test = {
+                    string file_cs_md = ""
+                    string file_cs_name = ""
+                    int index = 7
+                    string name = "R1C1"
+                    string scope_cs = ""
+                    string source_cs = "sRGB"
+                    string texture = "textures/srgb_texture.png"
+                }
+            }
+        )
+        {
+            int[] faceVertexCounts = [4]
+            int[] faceVertexIndices = [0, 1, 2, 3]
+            rel material:binding = </ColorSpaceTest/Materials/Material_07_R1C1>
+            normal3f[] normals = [(0, 0, 1)] (
+                interpolation = "constant"
+            )
+            point3f[] points = [(-6.5, 2.5, 0), (-2.5, 2.5, 0), (-2.5, 6.5, 0), (-6.5, 6.5, 0)]
+            texCoord2f[] primvars:st = [(0.5, 0.5)] (
+                interpolation = "constant"
+            )
+        }
+
+        def Mesh "Patch_08_R1C2" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            customData = {
+                dictionary cs_test = {
+                    string file_cs_md = ""
+                    string file_cs_name = ""
+                    int index = 8
+                    string name = "R1C2"
+                    string scope_cs = ""
+                    string source_cs = "auto"
+                    string texture = "textures/srgb_texture.png"
+                }
+            }
+        )
+        {
+            int[] faceVertexCounts = [4]
+            int[] faceVertexIndices = [0, 1, 2, 3]
+            rel material:binding = </ColorSpaceTest/Materials/Material_08_R1C2>
+            normal3f[] normals = [(0, 0, 1)] (
+                interpolation = "constant"
+            )
+            point3f[] points = [(-2, 2.5, 0), (2, 2.5, 0), (2, 6.5, 0), (-2, 6.5, 0)]
+            texCoord2f[] primvars:st = [(0.5, 0.5)] (
+                interpolation = "constant"
+            )
+        }
+
+        def Mesh "Patch_09_R1C3" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            customData = {
+                dictionary cs_test = {
+                    string file_cs_md = ""
+                    string file_cs_name = ""
+                    int index = 9
+                    string name = "R1C3"
+                    string scope_cs = ""
+                    string source_cs = ""
+                    string texture = "textures/srgb_texture.png"
+                }
+            }
+        )
+        {
+            int[] faceVertexCounts = [4]
+            int[] faceVertexIndices = [0, 1, 2, 3]
+            rel material:binding = </ColorSpaceTest/Materials/Material_09_R1C3>
+            normal3f[] normals = [(0, 0, 1)] (
+                interpolation = "constant"
+            )
+            point3f[] points = [(2.5, 2.5, 0), (6.5, 2.5, 0), (6.5, 6.5, 0), (2.5, 6.5, 0)]
+            texCoord2f[] primvars:st = [(0.5, 0.5)] (
+                interpolation = "constant"
+            )
+        }
+
+        def Mesh "Patch_10_R1C4" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            customData = {
+                dictionary cs_test = {
+                    string file_cs_md = ""
+                    string file_cs_name = ""
+                    int index = 10
+                    string name = "R1C4"
+                    string scope_cs = ""
+                    string source_cs = "lin_ap1_scene"
+                    string texture = "textures/srgb_texture.png"
+                }
+            }
+        )
+        {
+            int[] faceVertexCounts = [4]
+            int[] faceVertexIndices = [0, 1, 2, 3]
+            rel material:binding = </ColorSpaceTest/Materials/Material_10_R1C4>
+            normal3f[] normals = [(0, 0, 1)] (
+                interpolation = "constant"
+            )
+            point3f[] points = [(7, 2.5, 0), (11, 2.5, 0), (11, 6.5, 0), (7, 6.5, 0)]
+            texCoord2f[] primvars:st = [(0.5, 0.5)] (
+                interpolation = "constant"
+            )
+        }
+
+        def Mesh "Patch_11_R2C0" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            customData = {
+                dictionary cs_test = {
+                    string file_cs_md = "g22_ap1_scene"
+                    string file_cs_name = ""
+                    int index = 11
+                    string name = "R2C0"
+                    string scope_cs = ""
+                    string source_cs = "raw"
+                    string texture = "textures/g22_ap1.hdr"
+                }
+            }
+        )
+        {
+            int[] faceVertexCounts = [4]
+            int[] faceVertexIndices = [0, 1, 2, 3]
+            rel material:binding = </ColorSpaceTest/Materials/Material_11_R2C0>
+            normal3f[] normals = [(0, 0, 1)] (
+                interpolation = "constant"
+            )
+            point3f[] points = [(-11, -2, 0), (-7, -2, 0), (-7, 2, 0), (-11, 2, 0)]
+            texCoord2f[] primvars:st = [(0.5, 0.5)] (
+                interpolation = "constant"
+            )
+        }
+
+        def Mesh "Patch_12_R2C1" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            customData = {
+                dictionary cs_test = {
+                    string file_cs_md = "g22_ap1_scene"
+                    string file_cs_name = ""
+                    int index = 12
+                    string name = "R2C1"
+                    string scope_cs = ""
+                    string source_cs = "sRGB"
+                    string texture = "textures/g22_ap1.hdr"
+                }
+            }
+        )
+        {
+            int[] faceVertexCounts = [4]
+            int[] faceVertexIndices = [0, 1, 2, 3]
+            rel material:binding = </ColorSpaceTest/Materials/Material_12_R2C1>
+            normal3f[] normals = [(0, 0, 1)] (
+                interpolation = "constant"
+            )
+            point3f[] points = [(-6.5, -2, 0), (-2.5, -2, 0), (-2.5, 2, 0), (-6.5, 2, 0)]
+            texCoord2f[] primvars:st = [(0.5, 0.5)] (
+                interpolation = "constant"
+            )
+        }
+
+        def Mesh "Patch_13_R2C2" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            customData = {
+                dictionary cs_test = {
+                    string file_cs_md = "g22_ap1_scene"
+                    string file_cs_name = ""
+                    int index = 13
+                    string name = "R2C2"
+                    string scope_cs = ""
+                    string source_cs = "auto"
+                    string texture = "textures/g22_ap1.hdr"
+                }
+            }
+        )
+        {
+            int[] faceVertexCounts = [4]
+            int[] faceVertexIndices = [0, 1, 2, 3]
+            rel material:binding = </ColorSpaceTest/Materials/Material_13_R2C2>
+            normal3f[] normals = [(0, 0, 1)] (
+                interpolation = "constant"
+            )
+            point3f[] points = [(-2, -2, 0), (2, -2, 0), (2, 2, 0), (-2, 2, 0)]
+            texCoord2f[] primvars:st = [(0.5, 0.5)] (
+                interpolation = "constant"
+            )
+        }
+
+        def Mesh "Patch_14_R2C3" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            customData = {
+                dictionary cs_test = {
+                    string file_cs_md = "g22_ap1_scene"
+                    string file_cs_name = ""
+                    int index = 14
+                    string name = "R2C3"
+                    string scope_cs = ""
+                    string source_cs = ""
+                    string texture = "textures/g22_ap1.hdr"
+                }
+            }
+        )
+        {
+            int[] faceVertexCounts = [4]
+            int[] faceVertexIndices = [0, 1, 2, 3]
+            rel material:binding = </ColorSpaceTest/Materials/Material_14_R2C3>
+            normal3f[] normals = [(0, 0, 1)] (
+                interpolation = "constant"
+            )
+            point3f[] points = [(2.5, -2, 0), (6.5, -2, 0), (6.5, 2, 0), (2.5, 2, 0)]
+            texCoord2f[] primvars:st = [(0.5, 0.5)] (
+                interpolation = "constant"
+            )
+        }
+
+        def Mesh "Patch_15_R2C4" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            customData = {
+                dictionary cs_test = {
+                    string file_cs_md = "g22_ap1_scene"
+                    string file_cs_name = ""
+                    int index = 15
+                    string name = "R2C4"
+                    string scope_cs = ""
+                    string source_cs = "lin_ap1_scene"
+                    string texture = "textures/g22_ap1.hdr"
+                }
+            }
+        )
+        {
+            int[] faceVertexCounts = [4]
+            int[] faceVertexIndices = [0, 1, 2, 3]
+            rel material:binding = </ColorSpaceTest/Materials/Material_15_R2C4>
+            normal3f[] normals = [(0, 0, 1)] (
+                interpolation = "constant"
+            )
+            point3f[] points = [(7, -2, 0), (11, -2, 0), (11, 2, 0), (7, 2, 0)]
+            texCoord2f[] primvars:st = [(0.5, 0.5)] (
+                interpolation = "constant"
+            )
+        }
+
+        def Mesh "Patch_16_R3C0" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            customData = {
+                dictionary cs_test = {
+                    string file_cs_md = ""
+                    string file_cs_name = "srgb_p3d65_scene"
+                    int index = 16
+                    string name = "R3C0"
+                    string scope_cs = ""
+                    string source_cs = "raw"
+                    string texture = "textures/srgb_displayp3.hdr"
+                }
+            }
+        )
+        {
+            int[] faceVertexCounts = [4]
+            int[] faceVertexIndices = [0, 1, 2, 3]
+            rel material:binding = </ColorSpaceTest/Materials/Material_16_R3C0>
+            normal3f[] normals = [(0, 0, 1)] (
+                interpolation = "constant"
+            )
+            point3f[] points = [(-11, -6.5, 0), (-7, -6.5, 0), (-7, -2.5, 0), (-11, -2.5, 0)]
+            texCoord2f[] primvars:st = [(0.5, 0.5)] (
+                interpolation = "constant"
+            )
+        }
+
+        def Mesh "Patch_17_R3C1" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            customData = {
+                dictionary cs_test = {
+                    string file_cs_md = ""
+                    string file_cs_name = "srgb_p3d65_scene"
+                    int index = 17
+                    string name = "R3C1"
+                    string scope_cs = ""
+                    string source_cs = "sRGB"
+                    string texture = "textures/srgb_displayp3.hdr"
+                }
+            }
+        )
+        {
+            int[] faceVertexCounts = [4]
+            int[] faceVertexIndices = [0, 1, 2, 3]
+            rel material:binding = </ColorSpaceTest/Materials/Material_17_R3C1>
+            normal3f[] normals = [(0, 0, 1)] (
+                interpolation = "constant"
+            )
+            point3f[] points = [(-6.5, -6.5, 0), (-2.5, -6.5, 0), (-2.5, -2.5, 0), (-6.5, -2.5, 0)]
+            texCoord2f[] primvars:st = [(0.5, 0.5)] (
+                interpolation = "constant"
+            )
+        }
+
+        def Mesh "Patch_18_R3C2" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            customData = {
+                dictionary cs_test = {
+                    string file_cs_md = ""
+                    string file_cs_name = "srgb_p3d65_scene"
+                    int index = 18
+                    string name = "R3C2"
+                    string scope_cs = ""
+                    string source_cs = "auto"
+                    string texture = "textures/srgb_displayp3.hdr"
+                }
+            }
+        )
+        {
+            int[] faceVertexCounts = [4]
+            int[] faceVertexIndices = [0, 1, 2, 3]
+            rel material:binding = </ColorSpaceTest/Materials/Material_18_R3C2>
+            normal3f[] normals = [(0, 0, 1)] (
+                interpolation = "constant"
+            )
+            point3f[] points = [(-2, -6.5, 0), (2, -6.5, 0), (2, -2.5, 0), (-2, -2.5, 0)]
+            texCoord2f[] primvars:st = [(0.5, 0.5)] (
+                interpolation = "constant"
+            )
+        }
+
+        def Mesh "Patch_19_R3C3" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            customData = {
+                dictionary cs_test = {
+                    string file_cs_md = ""
+                    string file_cs_name = "srgb_p3d65_scene"
+                    int index = 19
+                    string name = "R3C3"
+                    string scope_cs = ""
+                    string source_cs = ""
+                    string texture = "textures/srgb_displayp3.hdr"
+                }
+            }
+        )
+        {
+            int[] faceVertexCounts = [4]
+            int[] faceVertexIndices = [0, 1, 2, 3]
+            rel material:binding = </ColorSpaceTest/Materials/Material_19_R3C3>
+            normal3f[] normals = [(0, 0, 1)] (
+                interpolation = "constant"
+            )
+            point3f[] points = [(2.5, -6.5, 0), (6.5, -6.5, 0), (6.5, -2.5, 0), (2.5, -2.5, 0)]
+            texCoord2f[] primvars:st = [(0.5, 0.5)] (
+                interpolation = "constant"
+            )
+        }
+
+        def Mesh "Patch_20_R3C4" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            customData = {
+                dictionary cs_test = {
+                    string file_cs_md = ""
+                    string file_cs_name = "srgb_p3d65_scene"
+                    int index = 20
+                    string name = "R3C4"
+                    string scope_cs = ""
+                    string source_cs = "lin_ap1_scene"
+                    string texture = "textures/srgb_displayp3.hdr"
+                }
+            }
+        )
+        {
+            int[] faceVertexCounts = [4]
+            int[] faceVertexIndices = [0, 1, 2, 3]
+            rel material:binding = </ColorSpaceTest/Materials/Material_20_R3C4>
+            normal3f[] normals = [(0, 0, 1)] (
+                interpolation = "constant"
+            )
+            point3f[] points = [(7, -6.5, 0), (11, -6.5, 0), (11, -2.5, 0), (7, -2.5, 0)]
+            texCoord2f[] primvars:st = [(0.5, 0.5)] (
+                interpolation = "constant"
+            )
+        }
+
+        def Mesh "Patch_21_R4C0" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            customData = {
+                dictionary cs_test = {
+                    string file_cs_md = ""
+                    string file_cs_name = ""
+                    int index = 21
+                    string name = "R4C0"
+                    string scope_cs = "lin_adobergb_scene"
+                    string source_cs = "raw"
+                    string texture = "textures/lin_adobergb.hdr"
+                }
+            }
+        )
+        {
+            int[] faceVertexCounts = [4]
+            int[] faceVertexIndices = [0, 1, 2, 3]
+            rel material:binding = </ColorSpaceTest/Materials/Material_21_R4C0>
+            normal3f[] normals = [(0, 0, 1)] (
+                interpolation = "constant"
+            )
+            point3f[] points = [(-11, -11, 0), (-7, -11, 0), (-7, -7, 0), (-11, -7, 0)]
+            texCoord2f[] primvars:st = [(0.5, 0.5)] (
+                interpolation = "constant"
+            )
+        }
+
+        def Mesh "Patch_22_R4C1" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            customData = {
+                dictionary cs_test = {
+                    string file_cs_md = ""
+                    string file_cs_name = ""
+                    int index = 22
+                    string name = "R4C1"
+                    string scope_cs = "lin_adobergb_scene"
+                    string source_cs = "sRGB"
+                    string texture = "textures/lin_adobergb.hdr"
+                }
+            }
+        )
+        {
+            int[] faceVertexCounts = [4]
+            int[] faceVertexIndices = [0, 1, 2, 3]
+            rel material:binding = </ColorSpaceTest/Materials/Material_22_R4C1>
+            normal3f[] normals = [(0, 0, 1)] (
+                interpolation = "constant"
+            )
+            point3f[] points = [(-6.5, -11, 0), (-2.5, -11, 0), (-2.5, -7, 0), (-6.5, -7, 0)]
+            texCoord2f[] primvars:st = [(0.5, 0.5)] (
+                interpolation = "constant"
+            )
+        }
+
+        def Mesh "Patch_23_R4C2" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            customData = {
+                dictionary cs_test = {
+                    string file_cs_md = ""
+                    string file_cs_name = ""
+                    int index = 23
+                    string name = "R4C2"
+                    string scope_cs = "lin_adobergb_scene"
+                    string source_cs = "auto"
+                    string texture = "textures/lin_adobergb.hdr"
+                }
+            }
+        )
+        {
+            int[] faceVertexCounts = [4]
+            int[] faceVertexIndices = [0, 1, 2, 3]
+            rel material:binding = </ColorSpaceTest/Materials/Material_23_R4C2>
+            normal3f[] normals = [(0, 0, 1)] (
+                interpolation = "constant"
+            )
+            point3f[] points = [(-2, -11, 0), (2, -11, 0), (2, -7, 0), (-2, -7, 0)]
+            texCoord2f[] primvars:st = [(0.5, 0.5)] (
+                interpolation = "constant"
+            )
+        }
+
+        def Mesh "Patch_24_R4C3" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            customData = {
+                dictionary cs_test = {
+                    string file_cs_md = ""
+                    string file_cs_name = ""
+                    int index = 24
+                    string name = "R4C3"
+                    string scope_cs = "lin_adobergb_scene"
+                    string source_cs = ""
+                    string texture = "textures/lin_adobergb.hdr"
+                }
+            }
+        )
+        {
+            int[] faceVertexCounts = [4]
+            int[] faceVertexIndices = [0, 1, 2, 3]
+            rel material:binding = </ColorSpaceTest/Materials/Material_24_R4C3>
+            normal3f[] normals = [(0, 0, 1)] (
+                interpolation = "constant"
+            )
+            point3f[] points = [(2.5, -11, 0), (6.5, -11, 0), (6.5, -7, 0), (2.5, -7, 0)]
+            texCoord2f[] primvars:st = [(0.5, 0.5)] (
+                interpolation = "constant"
+            )
+        }
+
+        def Mesh "Patch_25_R4C4" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            customData = {
+                dictionary cs_test = {
+                    string file_cs_md = ""
+                    string file_cs_name = ""
+                    int index = 25
+                    string name = "R4C4"
+                    string scope_cs = "lin_adobergb_scene"
+                    string source_cs = "lin_ap1_scene"
+                    string texture = "textures/lin_adobergb.hdr"
+                }
+            }
+        )
+        {
+            int[] faceVertexCounts = [4]
+            int[] faceVertexIndices = [0, 1, 2, 3]
+            rel material:binding = </ColorSpaceTest/Materials/Material_25_R4C4>
+            normal3f[] normals = [(0, 0, 1)] (
+                interpolation = "constant"
+            )
+            point3f[] points = [(7, -11, 0), (11, -11, 0), (11, -7, 0), (7, -7, 0)]
+            texCoord2f[] primvars:st = [(0.5, 0.5)] (
+                interpolation = "constant"
+            )
+        }
+    }
+
+    def Mesh "Background_Mesh" (
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        int[] faceVertexCounts = [4]
+        int[] faceVertexIndices = [0, 1, 2, 3]
+        rel material:binding = </ColorSpaceTest/Materials/Background>
+        normal3f[] normals = [(0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1)] (
+            interpolation = "vertex"
+        )
+        point3f[] points = [(-12, -12, -0.5), (12, -12, -0.5), (12, 12, -0.5), (-12, 12, -0.5)]
+    }
+
+    def Scope "Label_Meshes"
+    {
+        def Mesh "Col_00" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4]
+            int[] faceVertexIndices = [0, 1, 2, 3]
+            rel material:binding = </ColorSpaceTest/Label_Materials/LabelCol_00>
+            normal3f[] normals = [(0, 0, 1)] (
+                interpolation = "constant"
+            )
+            point3f[] points = [(-11, 11.5, 0), (-7, 11.5, 0), (-7, 13, 0), (-11, 13, 0)]
+            texCoord2f[] primvars:st = [(0, 0), (1, 0), (1, 1), (0, 1)] (
+                interpolation = "vertex"
+            )
+        }
+
+        def Mesh "Col_01" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4]
+            int[] faceVertexIndices = [0, 1, 2, 3]
+            rel material:binding = </ColorSpaceTest/Label_Materials/LabelCol_01>
+            normal3f[] normals = [(0, 0, 1)] (
+                interpolation = "constant"
+            )
+            point3f[] points = [(-6.5, 11.5, 0), (-2.5, 11.5, 0), (-2.5, 13, 0), (-6.5, 13, 0)]
+            texCoord2f[] primvars:st = [(0, 0), (1, 0), (1, 1), (0, 1)] (
+                interpolation = "vertex"
+            )
+        }
+
+        def Mesh "Col_02" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4]
+            int[] faceVertexIndices = [0, 1, 2, 3]
+            rel material:binding = </ColorSpaceTest/Label_Materials/LabelCol_02>
+            normal3f[] normals = [(0, 0, 1)] (
+                interpolation = "constant"
+            )
+            point3f[] points = [(-2, 11.5, 0), (2, 11.5, 0), (2, 13, 0), (-2, 13, 0)]
+            texCoord2f[] primvars:st = [(0, 0), (1, 0), (1, 1), (0, 1)] (
+                interpolation = "vertex"
+            )
+        }
+
+        def Mesh "Col_03" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4]
+            int[] faceVertexIndices = [0, 1, 2, 3]
+            rel material:binding = </ColorSpaceTest/Label_Materials/LabelCol_03>
+            normal3f[] normals = [(0, 0, 1)] (
+                interpolation = "constant"
+            )
+            point3f[] points = [(2.5, 11.5, 0), (6.5, 11.5, 0), (6.5, 13, 0), (2.5, 13, 0)]
+            texCoord2f[] primvars:st = [(0, 0), (1, 0), (1, 1), (0, 1)] (
+                interpolation = "vertex"
+            )
+        }
+
+        def Mesh "Col_04" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4]
+            int[] faceVertexIndices = [0, 1, 2, 3]
+            rel material:binding = </ColorSpaceTest/Label_Materials/LabelCol_04>
+            normal3f[] normals = [(0, 0, 1)] (
+                interpolation = "constant"
+            )
+            point3f[] points = [(7, 11.5, 0), (11, 11.5, 0), (11, 13, 0), (7, 13, 0)]
+            texCoord2f[] primvars:st = [(0, 0), (1, 0), (1, 1), (0, 1)] (
+                interpolation = "vertex"
+            )
+        }
+
+        def Mesh "Row_00" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4]
+            int[] faceVertexIndices = [0, 1, 2, 3]
+            rel material:binding = </ColorSpaceTest/Label_Materials/LabelRow_00>
+            normal3f[] normals = [(0, 0, 1)] (
+                interpolation = "constant"
+            )
+            point3f[] points = [(-13, 7, 0), (-11.5, 7, 0), (-11.5, 11, 0), (-13, 11, 0)]
+            texCoord2f[] primvars:st = [(0, 0), (1, 0), (1, 1), (0, 1)] (
+                interpolation = "vertex"
+            )
+        }
+
+        def Mesh "Row_01" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4]
+            int[] faceVertexIndices = [0, 1, 2, 3]
+            rel material:binding = </ColorSpaceTest/Label_Materials/LabelRow_01>
+            normal3f[] normals = [(0, 0, 1)] (
+                interpolation = "constant"
+            )
+            point3f[] points = [(-13, 2.5, 0), (-11.5, 2.5, 0), (-11.5, 6.5, 0), (-13, 6.5, 0)]
+            texCoord2f[] primvars:st = [(0, 0), (1, 0), (1, 1), (0, 1)] (
+                interpolation = "vertex"
+            )
+        }
+
+        def Mesh "Row_02" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4]
+            int[] faceVertexIndices = [0, 1, 2, 3]
+            rel material:binding = </ColorSpaceTest/Label_Materials/LabelRow_02>
+            normal3f[] normals = [(0, 0, 1)] (
+                interpolation = "constant"
+            )
+            point3f[] points = [(-13, -2, 0), (-11.5, -2, 0), (-11.5, 2, 0), (-13, 2, 0)]
+            texCoord2f[] primvars:st = [(0, 0), (1, 0), (1, 1), (0, 1)] (
+                interpolation = "vertex"
+            )
+        }
+
+        def Mesh "Row_03" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4]
+            int[] faceVertexIndices = [0, 1, 2, 3]
+            rel material:binding = </ColorSpaceTest/Label_Materials/LabelRow_03>
+            normal3f[] normals = [(0, 0, 1)] (
+                interpolation = "constant"
+            )
+            point3f[] points = [(-13, -6.5, 0), (-11.5, -6.5, 0), (-11.5, -2.5, 0), (-13, -2.5, 0)]
+            texCoord2f[] primvars:st = [(0, 0), (1, 0), (1, 1), (0, 1)] (
+                interpolation = "vertex"
+            )
+        }
+
+        def Mesh "Row_04" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4]
+            int[] faceVertexIndices = [0, 1, 2, 3]
+            rel material:binding = </ColorSpaceTest/Label_Materials/LabelRow_04>
+            normal3f[] normals = [(0, 0, 1)] (
+                interpolation = "constant"
+            )
+            point3f[] points = [(-13, -11, 0), (-11.5, -11, 0), (-11.5, -7, 0), (-13, -7, 0)]
+            texCoord2f[] primvars:st = [(0, 0), (1, 0), (1, 1), (0, 1)] (
+                interpolation = "vertex"
+            )
+        }
+
+        def Mesh "Bottom" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            int[] faceVertexCounts = [4]
+            int[] faceVertexIndices = [0, 1, 2, 3]
+            rel material:binding = </ColorSpaceTest/Label_Materials/LabelBottom>
+            normal3f[] normals = [(0, 0, 1)] (
+                interpolation = "constant"
+            )
+            point3f[] points = [(-11, -13, 0), (11, -13, 0), (11, -11.5, 0), (-11, -11.5, 0)]
+            texCoord2f[] primvars:st = [(0, 0), (1, 0), (1, 1), (0, 1)] (
+                interpolation = "vertex"
+            )
+        }
+    }
+}
+
+def Camera "Camera"
+{
+    float2 clippingRange = (1, 500)
+    float focalLength = 50
+    float horizontalAperture = 36
+    float verticalAperture = 24
+    double3 xformOp:translate = (0, 0, 53.92156862745098)
+    uniform token[] xformOpOrder = ["xformOp:translate"]
+}
+
